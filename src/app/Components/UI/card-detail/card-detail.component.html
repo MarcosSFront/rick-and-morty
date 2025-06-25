@@ -7,13 +7,37 @@
       <img [src]="character.image" [alt]="character.name" />
     </div>
     <div class="details-container">
-      <p class="detail-item">Status: <span class="status" [ngClass]="character.status.toLowerCase()">{{ character.status }}</span> <span class="status-emoji">{{ character.status === 'Alive' ? '🟢' : character.status === 'Dead' ? '🔴' : '⚪' }}</span></p>
-      <p class="detail-item">Species: <span>{{ character.species }}</span></p>
-      <p class="detail-item">Type: <span>{{ character.type || 'N/A' }}</span></p>
-      <p class="detail-item">Gender: <span>{{ character.gender }}</span></p>
-      <p class="detail-item">Origin: <span>{{ character.origin?.name }}</span></p>
-      <p class="detail-item">Location: <span>{{ character.location?.name }}</span></p>
-      <p class="detail-item">Created: <span>{{ character.created | date:'medium' }}</span></p>
+      <p class="detail-item">
+        Status:
+        <span class="status" [ngClass]="character.status.toLowerCase()">{{
+          character.status
+        }}</span>
+        <span class="status-emoji">{{
+          character.status === "Alive"
+            ? "🟢"
+            : character.status === "Dead"
+            ? "🔴"
+            : "⚪"
+        }}</span>
+      </p>
+      <p class="detail-item">
+        Species: <span>{{ character.species }}</span>
+      </p>
+      <p class="detail-item">
+        Type: <span>{{ character.type || "N/A" }}</span>
+      </p>
+      <p class="detail-item">
+        Gender: <span>{{ character.gender }}</span>
+      </p>
+      <p class="detail-item">
+        Origin: <span>{{ character.origin?.name }}</span>
+      </p>
+      <p class="detail-item">
+        Location: <span>{{ character.location?.name }}</span>
+      </p>
+      <p class="detail-item">
+        Created: <span>{{ character.created | date : "medium" }}</span>
+      </p>
     </div>
   </section>
   <footer class="page-footer">

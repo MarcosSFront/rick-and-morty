@@ -1,28 +1,66 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { CharacterDetailComponent } from './card-detail.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
-import { CardDetailComponent } from './card-detail.component';
+describe('CharacterDetailComponent', () => {
+  let component: CharacterDetailComponent;
+  let fixture: ComponentFixture<CharacterDetailComponent>;
+  let httpMock: HttpTestingController;
+  let mockActivatedRoute;
 
-describe('CardDetailComponent', () => {
-  let component: CardDetailComponent;
-  let fixture: ComponentFixture<CardDetailComponent>;
+  beforeEach(waitForAsync(() => {
 
-  beforeEach(async(() => {
+    mockActivatedRoute = {
+      snapshot: {
+        paramMap: {
+          get: jest.fn().mockReturnValue('1'), 
+        },
+      },
+    };
+
     TestBed.configureTestingModule({
-      declarations: [ CardDetailComponent ]
-    })
-    .compileComponents();
+      imports: [CharacterDetailComponent, HttpClientTestingModule],
+      providers: [{ provide: ActivatedRoute, useValue: mockActivatedRoute }],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardDetailComponent);
+    fixture = TestBed.createComponent(CharacterDetailComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
-  it('should create', () => {
+  afterEach(() => {
+    httpMock.verify();
+  });
+
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should fetch character data on ngOnInit', () => {
+    fixture.detectChanges();
+
+
+    const req = httpMock.expectOne('https://rickandmortyapi.com/api/character/1');
+    expect(req.request.method).toBe('GET');
+
+ 
+    const mockCharacter = { id: 1, name: 'Rick Sanchez' };
+    req.flush(mockCharacter);
+
+
+    expect(component.character).toEqual(mockCharacter);
+  });
+
+  it('should call goBack and navigate back', () => {
+
+    const spy = jest.spyOn(window.history, 'back');
+
+    component.goBack();
+
+    expect(spy).toHaveBeenCalled();
   });
 });

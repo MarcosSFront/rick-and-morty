@@ -17,7 +17,7 @@ export class CharacterListComponent {
   private router = inject(Router);
   private currentPage = signal(1);
   isLoading = signal(false);
-  hasMoreData = signal(true); 
+  hasMoreData = signal(true);
   characters = signal<any[]>([]);
   searchQuery = signal<string>('');
   selectedFilter = signal<string>('All');
@@ -28,7 +28,7 @@ export class CharacterListComponent {
   }
 
   private loadCharacters() {
-    if (this.isLoading() || !this.hasMoreData()) return; 
+    if (this.isLoading() || !this.hasMoreData()) return;
 
     this.isLoading.set(true);
 
@@ -72,7 +72,7 @@ export class CharacterListComponent {
       )
       .subscribe((newCharacters) => {
         if (newCharacters.length === 0) {
-          this.hasMoreData.set(false); 
+          this.hasMoreData.set(false);
         } else {
           if (this.currentPage() === 1) {
             this.characters.set(newCharacters);
@@ -100,7 +100,7 @@ export class CharacterListComponent {
     }
 
     this.currentPage.set(1);
-    this.hasMoreData.set(true); 
+    this.hasMoreData.set(true);
     this.characters.set([]);
     this.loadCharacters();
   }
@@ -108,7 +108,7 @@ export class CharacterListComponent {
   onSearchChange(query: string) {
     this.searchQuery.set(query || '');
     this.currentPage.set(1);
-    this.hasMoreData.set(true); 
+    this.hasMoreData.set(true);
     this.characters.set([]);
     this.loadCharacters();
   }
@@ -116,17 +116,20 @@ export class CharacterListComponent {
   onFilterChange(filter: string) {
     this.selectedFilter.set(filter);
     this.currentPage.set(1);
-    this.hasMoreData.set(true); 
+    this.hasMoreData.set(true);
     this.characters.set([]);
     this.loadCharacters();
   }
-   viewDetails(id: number) {
-    this.router.navigate(['/character', id]); 
+  viewDetails(id: number) {
+    this.router.navigate(['/character', id]);
   }
 
   @HostListener('window:scroll', [])
   onScroll() {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight - 100
+    ) {
       this.loadCharacters();
     }
   }

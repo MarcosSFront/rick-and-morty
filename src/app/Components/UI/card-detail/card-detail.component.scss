@@ -6,7 +6,7 @@
   border-radius: 16px;
   padding: 20px;
   color: #ecf0f1;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
 
   .page-header {
     text-align: center;
@@ -93,7 +93,8 @@
 }
 
 @keyframes blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {

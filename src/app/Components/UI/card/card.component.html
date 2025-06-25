@@ -1,4 +1,3 @@
-
 <div class="page-container">
   <div class="search-container">
     <input
@@ -10,7 +9,11 @@
       name="searchInput"
     />
     <span class="status-label">Status:</span>
-    <select #statusSelect (change)="onFilterChange(statusSelect.value)" class="status-select">
+    <select
+      #statusSelect
+      (change)="onFilterChange(statusSelect.value)"
+      class="status-select"
+    >
       <option value="All">All</option>
       <option value="Alive">Alive</option>
       <option value="Dead">Dead</option>
@@ -20,25 +23,52 @@
 
   <div class="gender-filter">
     <label class="gender-option">
-      <input type="checkbox" (change)="handleGenderChange($event, 'Male')" /> Male
+      <input type="checkbox" (change)="handleGenderChange($event, 'Male')" />
+      Male
     </label>
     <label class="gender-option">
-      <input type="checkbox" (change)="handleGenderChange($event, 'Female')" /> Female
+      <input type="checkbox" (change)="handleGenderChange($event, 'Female')" />
+      Female
     </label>
     <label class="gender-option">
-      <input type="checkbox" (change)="handleGenderChange($event, 'Genderless')" /> Genderless
+      <input
+        type="checkbox"
+        (change)="handleGenderChange($event, 'Genderless')"
+      />
+      Genderless
     </label>
     <label class="gender-option">
-      <input type="checkbox" (change)="handleGenderChange($event, 'unknown')" /> Unknown
+      <input type="checkbox" (change)="handleGenderChange($event, 'unknown')" />
+      Unknown
     </label>
   </div>
 
   <div class="character-list">
-    <div *ngFor="let character of characters()" class="character-card" (click)="viewDetails(character.id)">
-      <img [src]="character.image" [alt]="character.name" class="character-image" />
+    <div
+      *ngFor="let character of characters()"
+      class="character-card"
+      (click)="viewDetails(character.id)"
+    >
+      <img
+        [src]="character.image"
+        [alt]="character.name"
+        class="character-image"
+      />
       <div class="character-details">
         <h3 class="character-name">{{ character.name }}</h3>
-        <p><span class="info">Status:</span><span class="status" [ngClass]="character.status.toLowerCase()">{{ character.status }}</span> <span class="status-emoji">{{ character.status === 'Alive' ? '🟢' : character.status === 'Dead' ? '🔴' : '⚪' }}</span></p>
+        <p>
+          <span class="info">Status:</span
+          ><span class="status" [ngClass]="character.status.toLowerCase()">{{
+            character.status
+          }}</span>
+          <span class="status-emoji">{{
+            character.status === "Alive"
+              ? "🟢"
+              : character.status === "Dead"
+              ? "🔴"
+              : "⚪"
+          }}</span>
+        </p>
         <p><span class="info">Species:</span> {{ character.species }}</p>
         <p><span class="info">Gender:</span> {{ character.gender }}</p>
         <p><span class="info">Location:</span> {{ character.location }}</p>
@@ -46,9 +76,7 @@
     </div>
   </div>
 
-  <div *ngIf="isLoading()" class="loading-spinner">
-    Loading...
-  </div>
+  <div *ngIf="isLoading()" class="loading-spinner">Loading...</div>
 </div>
 
 <ng-template #loading>
