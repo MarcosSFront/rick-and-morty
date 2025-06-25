@@ -1,0 +1,102 @@
+.character-page {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #1f2833;
+  border: 2px solid #45a29e;
+  border-radius: 16px;
+  padding: 20px;
+  color: #ecf0f1;
+  font-family: 'Orbitron', sans-serif;
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 20px;
+
+    .character-name {
+      font-size: 32px;
+      color: #66fcf1;
+    }
+  }
+
+  .page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .image-container {
+      margin-bottom: 20px;
+
+      img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        border-radius: 16px;
+      }
+    }
+
+    .details-container {
+      width: 100%;
+      max-width: 500px;
+
+      .detail-item {
+        margin-bottom: 10px;
+        font-size: 18px;
+
+        span {
+          color: #c5c6c7;
+        }
+
+        .status {
+          font-weight: bold;
+          color: inherit;
+
+          &.alive {
+            color: #66fcf1;
+          }
+          &.dead {
+            color: #e63946;
+          }
+          &.unknown {
+            color: #d3d3d3;
+          }
+        }
+      }
+    }
+  }
+
+  .page-footer {
+    text-align: center;
+    margin-top: 20px;
+
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #45a29e;
+      color: #0b0c10;
+      font-size: 16px;
+      cursor: pointer;
+
+      &:hover {
+        background: #66fcf1;
+      }
+    }
+  }
+}
+
+.loading-text {
+  text-align: center;
+  color: #c5c6c7;
+  font-size: 18px;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

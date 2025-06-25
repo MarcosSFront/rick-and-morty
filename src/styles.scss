@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+//-----------------------------Fonts-----------------------------//
+$font-family: 'Inconsolata', monospace;
+$font-size-s: 0.75rem;
+$font-size-m: 1rem;
+$font-size-l: 1.25rem; 
+$font-size-xl: 1.5rem;
+
+//-----------------------------Colors-----------------------------//
+$color-primary: #007bff;
+$color-secondary: #6c757d;
+$color-background: #f8f9fa;
+$color-text: #343a40;
+$color-border: #dee2e6;

@@ -1,0 +1,26 @@
+<div class="character-page" *ngIf="character; else loading">
+  <header class="page-header">
+    <h1 class="character-name">{{ character.name }}</h1>
+  </header>
+  <section class="page-content">
+    <div class="image-container">
+      <img [src]="character.image" [alt]="character.name" />
+    </div>
+    <div class="details-container">
+      <p class="detail-item">Status: <span class="status" [ngClass]="character.status.toLowerCase()">{{ character.status }}</span> <span class="status-emoji">{{ character.status === 'Alive' ? '🟢' : character.status === 'Dead' ? '🔴' : '⚪' }}</span></p>
+      <p class="detail-item">Species: <span>{{ character.species }}</span></p>
+      <p class="detail-item">Type: <span>{{ character.type || 'N/A' }}</span></p>
+      <p class="detail-item">Gender: <span>{{ character.gender }}</span></p>
+      <p class="detail-item">Origin: <span>{{ character.origin?.name }}</span></p>
+      <p class="detail-item">Location: <span>{{ character.location?.name }}</span></p>
+      <p class="detail-item">Created: <span>{{ character.created | date:'medium' }}</span></p>
+    </div>
+  </section>
+  <footer class="page-footer">
+    <button class="back-button" (click)="goBack()">Voltar</button>
+  </footer>
+</div>
+
+<ng-template #loading>
+  <p class="loading-text">Carregando dados...</p>
+</ng-template>

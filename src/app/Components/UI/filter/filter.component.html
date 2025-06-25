@@ -1,0 +1,9 @@
+<div class="filter-container">
+      <button 
+        *ngFor="let option of options" 
+        (click)="selectFilter(option)" 
+        [class.active]="selectedFilter === option"
+        class="filter-button">
+        {{ option }}
+      </button>
+    </div>
