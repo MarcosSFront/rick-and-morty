@@ -2,6 +2,28 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
 
+## Prerequisites
+
+Ensure you have the following installed on your system:
+
+    Node.js (version 16.x or higher is recommended)
+
+    npm (Node Package Manager, comes with Node.js)
+
+You can check your versions with:
+
+```bash
+node -v
+npm -v
+```
+
+## Installation
+
+To install the project's dependencies, run:
+
+```bash
+npm install
+```
 ## Development server
 
 To start a local development server, run:
